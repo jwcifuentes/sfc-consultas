@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FestivosColombia>
+	<sabadoEsFestivo>true</sabadoEsFestivo>
+	<domingoEsFestivo>true</domingoEsFestivo>
+	<DiasFijos>
+		<fecha>07-20</fecha>
+		<fecha>08-07</fecha>
+	</DiasFijos>
+	<SiguienteLunes>
+		<fecha>01-06</fecha>
+		<fecha>03-19</fecha>
+	</SiguienteLunes>
+	<RelativosPascua>
+		<delta>-43</delta>
+	</RelativosPascua>
+</FestivosColombia>
