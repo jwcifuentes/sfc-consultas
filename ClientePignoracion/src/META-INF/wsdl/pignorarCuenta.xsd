@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.rbm.com.co/esb/pignorarCuenta" xmlns:rdb="http://www.rbm.com.co/esb/" xmlns:tns="http://www.rbm.com.co/esb/pignorarCuenta">
+<xsd:import namespace="http://www.rbm.com.co/esb/" schemaLocation="pignorarCuentaTypes.xsd"/>	  
+	  
+	<xsd:element name="pignorarCuentaSolicitud" type="tns:pignorarCuentaSolicitudReqType"/> 
+	<xsd:element name="pignorarCuentaRespuesta" type="tns:pignorarCuentaRespuestaResType"/>
+
+	<xsd:complexType name="pignorarCuentaSolicitudReqType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="cabeceraSolicitud" type="rdb:CabeceraType"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="infoTransaccion" type="tns:InfoTransaccionReqType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+
+	<xsd:complexType name="InfoTransaccionReqType">
+		<xsd:sequence>
+		  <xsd:element maxOccurs="1" minOccurs="1" name="TipoRegistro" type="tns:TipoRegistroType"/>
+		  <xsd:element maxOccurs="1" minOccurs="1" name="Franquicia" type="tns:FranquiciaType"/>
+		  <xsd:element maxOccurs="1" minOccurs="1" name="CodigoUnico" type="tns:CodigoUnicoType"/>
+		  <xsd:element maxOccurs="1" minOccurs="1" name="Adquiriente" type="tns:AdquirienteType"/>
+		  <xsd:element maxOccurs="1" minOccurs="1" name="TipoCuenta" type="tns:TipoCuentaType"/>  
+		  <xsd:element maxOccurs="1" minOccurs="1" name="Cuenta" type="tns:CuentaType"/>
+		  <xsd:element maxOccurs="1" minOccurs="1" name="FechaInicial" type="tns:FechaType"/>
+		  <xsd:element maxOccurs="1" minOccurs="1" name="FechaFinal" type="tns:FechaType"/>
+		  <xsd:element maxOccurs="1" minOccurs="1" name="Usuario" type="tns:UsuarioType"/>
+		</xsd:sequence>
+	</xsd:complexType>	
+	
+	<xsd:simpleType name="TipoTransaccion">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="pignorarCuenta"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="FechaTransaccion">
+			<xsd:restriction base="xsd:dateTime"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TipoRegistroType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="FranquiciaType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="CodigoUnicoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="11"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="AdquirienteType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="3"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="TipoCuentaType">
+		<xsd:restriction base="xsd:string">
+		<xsd:maxLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="CuentaType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="19"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+	
+	<xsd:simpleType name="FechaType">
+		<xsd:restriction base="xsd:date"/>
+	</xsd:simpleType>
+		
+	<xsd:simpleType name="UsuarioType">
+		<xsd:restriction base="xsd:string">
+		<xsd:maxLength value="20"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="pignorarCuentaRespuestaResType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="cabeceraRespuesta" type="rdb:CabeceraType"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="infoRespuesta" type="rdb:InfoRespuestaResType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

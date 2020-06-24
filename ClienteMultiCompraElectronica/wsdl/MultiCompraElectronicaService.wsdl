@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="MultiCompraElectronica" targetNamespace="http://www.rbm.com.co/esb/comercio/compra/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.rbm.com.co/esb/comercio/compra/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.rbm.com.co/esb/comercio/compra/" xmlns:mrm="http://www.rbm.com.co/esb/comercio/compra/">
+      <xsd:include schemaLocation="multiCompraElectronica.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="multiCompraProcesar_in">
+    <wsdl:part element="tns:multiCompraProcesarSolicitud" name="multiCompraProcesarSolicitud"/>
+  </wsdl:message>
+  <wsdl:message name="multiCompraProcesar_out">
+    <wsdl:part element="tns:multiCompraProcesarRespuesta" name="multiCompraProcesarRespuesta"/>
+  </wsdl:message>
+  <wsdl:message name="multiCompraReversar_in">
+    <wsdl:part element="tns:multiCompraReversarSolicitud" name="multiCompraReversarSolicitud"/>
+  </wsdl:message>
+  <wsdl:message name="multiCompraReversar_out">
+    <wsdl:part element="tns:multiCompraReversarRespuesta" name="multiCompraReversarRespuesta"/>
+  </wsdl:message>
+  <wsdl:portType name="MultiCompraElectronica_MsgSetPortType">
+    <wsdl:operation name="multiCompraProcesar">
+      <wsdl:input message="tns:multiCompraProcesar_in" name="multiCompraProcesar_Input"/>
+      <wsdl:output message="tns:multiCompraProcesar_out" name="multiCompraProcesar_Output"/>
+    </wsdl:operation>
+    <wsdl:operation name="multiCompraReversar">
+      <wsdl:input message="tns:multiCompraReversar_in" name="multiCompraReversar_Input"/>
+      <wsdl:output message="tns:multiCompraReversar_out" name="multiCompraReversar_Output"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MultiCompraElectronica_HTTP_Binding" type="tns:MultiCompraElectronica_MsgSetPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="multiCompraProcesar">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="multiCompraProcesar_Input">
+        <soap:body parts="multiCompraProcesarSolicitud" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="multiCompraProcesar_Output">
+        <soap:body parts="multiCompraProcesarRespuesta" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multiCompraReversar">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="multiCompraReversar_Input">
+        <soap:body parts="multiCompraReversarSolicitud" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="multiCompraReversar_Output">
+        <soap:body parts="multiCompraReversarRespuesta" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MultiCompraElectronica_HTTP_Service">
+    <wsdl:port binding="tns:MultiCompraElectronica_HTTP_Binding" name="MultiCompraElectronica_HTTP_Port">
+      <soap:address location="http://redeban.esb:50093/WebServiceTechAdapter/multicompraelectronica01"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

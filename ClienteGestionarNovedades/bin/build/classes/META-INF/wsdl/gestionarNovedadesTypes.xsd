@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.rbm.com.co/esb/" xmlns:tns="http://www.rbm.com.co/esb/">
+
+	
+	<xsd:complexType name="CabeceraType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="tipoTransaccion" type="tns:TipoTransaccion"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="idTerminal" type="tns:IdTerminal"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="idTransaccionTerminal" type="tns:IdTransaccionTerminal"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="fechaTransaccion" type="tns:FechaTransaccion"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="FechaTransaccion">
+			<xsd:restriction base="xsd:dateTime"/>
+	</xsd:simpleType>
+
+		<xsd:simpleType name="TipoTransaccion">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="IdTerminal">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="16"/>
+		</xsd:restriction>
+	</xsd:simpleType>	
+
+	<xsd:simpleType name="IdTransaccionTerminal">
+		<xsd:restriction base="xsd:long"/>
+	</xsd:simpleType>	
+
+	<xsd:complexType name="InfoRespuestaResType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="codRespuesta" type="tns:CodRespuesta"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="descRespuesta" type="tns:DescRespuesta"/>
+			<xsd:element maxOccurs="1" minOccurs="0" name="estado" type="tns:Estado"/>
+		</xsd:sequence>
+	</xsd:complexType>	
+	
+	<xsd:simpleType name="CodRespuesta">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="DescRespuesta">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Estado">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>	
+	
+</xsd:schema>

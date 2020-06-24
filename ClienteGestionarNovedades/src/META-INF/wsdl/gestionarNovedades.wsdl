@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="gestionarNovedades" targetNamespace="http://www.rbm.com.co/esb/gestionarNovedades" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.rbm.com.co/esb/gestionarNovedades" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.rbm.com.co/esb/gestionarNovedades">
+			<xsd:include schemaLocation="gestionarNovedades.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="gestionarNovedadesProcesar_in">
+		<wsdl:part element="tns:gestionarNovedadesSolicitud" name="gestionarNovedadesSolicitud"/>
+	</wsdl:message>
+
+	<wsdl:message name="gestionarNovedadesProcesar_out">
+		<wsdl:part element="tns:gestionarNovedadesRespuesta" name="gestionarNovedadesRespuesta"/>
+	</wsdl:message>
+
+	<wsdl:portType name="gestionarNovedadesPortType">
+
+		<wsdl:operation name="gestionarNovedadesProcesar">
+			<wsdl:input message="tns:gestionarNovedadesProcesar_in" name="gestionarNovedades_Input"/>
+			<wsdl:output message="tns:gestionarNovedadesProcesar_out" name="gestionarNovedades_Output"/>
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="gestionarNovedadesSOAP_HTTP_Binding" type="tns:gestionarNovedadesPortType">
+
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+		<wsdl:operation name="gestionarNovedadesProcesar">
+			<soap:operation soapAction="http://www.rbm.com.co/esb/gestionarNovedades"/>
+			<wsdl:input name="gestionarNovedades_Input">
+				<soap:body parts="gestionarNovedadesSolicitud" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="gestionarNovedades_Output">
+				<soap:body parts="gestionarNovedadesRespuesta" use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="gestionarNovedades_HTTP_Service">
+		<wsdl:port binding="tns:gestionarNovedadesSOAP_HTTP_Binding" name="gestionarNovedades_HTTP_Port">
+			<soap:address location="https://txsprodrbm.com/ESBgestionarNovedades/gestionarNovedades"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

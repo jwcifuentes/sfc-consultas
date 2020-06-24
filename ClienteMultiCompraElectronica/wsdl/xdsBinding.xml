@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jaxb:bindings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" version="1.0">
+	<jaxb:globalBindings underscoreBinding="asCharInWord" />
+	<jaxb:bindings schemaLocation="./multiCompraElectronica.xsd"
+        node="//xsd:schema[@targetNamespace='http://www.rbm.com.co/esb/comercio/compra/']">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.rbm.esb.comercio.compra" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="./comercio.xsd"
+        node="//xsd:schema[@targetNamespace='http://www.rbm.com.co/esb/comercio/']">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.rbm.esb.comercio" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    <jaxb:bindings schemaLocation="./redebanESB.xsd"
+        node="//xsd:schema[@targetNamespace='http://www.rbm.com.co/esb/']">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.rbm.esb" />
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+</jaxb:bindings>

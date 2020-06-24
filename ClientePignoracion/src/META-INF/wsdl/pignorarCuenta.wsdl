@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="pignorarCuenta" targetNamespace="http://www.rbm.com.co/esb/pignorarCuenta" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.rbm.com.co/esb/pignorarCuenta" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://www.rbm.com.co/esb/pignorarCuenta">
+			<xsd:include schemaLocation="pignorarCuenta.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="pignorarCuentaProcesar_in">
+		<wsdl:part element="tns:pignorarCuentaSolicitud" name="pignorarCuentaSolicitud"/>
+	</wsdl:message>
+
+	<wsdl:message name="pignorarCuentaProcesar_out">
+		<wsdl:part element="tns:pignorarCuentaRespuesta" name="pignorarCuentaRespuesta"/>
+	</wsdl:message>
+
+	<wsdl:portType name="pignorarCuentaPortType">
+
+		<wsdl:operation name="pignorarCuentaProcesar">
+			<wsdl:input message="tns:pignorarCuentaProcesar_in" name="pignorarCuenta_Input"/>
+			<wsdl:output message="tns:pignorarCuentaProcesar_out" name="pignorarCuenta_Output"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="pignorarCuentaSOAP_HTTP_Binding" type="tns:pignorarCuentaPortType">
+
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+		<wsdl:operation name="pignorarCuentaProcesar">
+			<soap:operation soapAction="http://www.rbm.com.co/esb/pignorarCuenta"/>
+			<wsdl:input name="pignorarCuenta_Input">
+				<soap:body parts="pignorarCuentaSolicitud" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="pignorarCuenta_Output">
+				<soap:body parts="pignorarCuentaRespuesta" use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="pignorarCuenta_HTTP_Service">
+		<wsdl:port binding="tns:pignorarCuentaSOAP_HTTP_Binding" name="pignorarCuenta_HTTP_Port">
+			<soap:address location="https://txsprodrbm.com/ESBpignorarCuenta/pignorarCuenta"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
