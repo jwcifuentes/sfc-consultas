@@ -48,6 +48,9 @@ public class Constantes {
 	/** Constante cambiarEstadoTRNS. */
 	public static final String QUERY_CAMBIAR_ESTADO_TRANSACCION = "CambiarEstadoTrns";
 	
+	/** Constante cambiar estado TRANSACCION y estado de la respuesta */
+	public static final String QUERY_CAMBIAR_ESTADO_TRANSACCION_RESPUESTA = "CambiarEstadoRespTrns";
+	
 	/** Constante obtenerFranquicias. */
 	public static final String QUERY_OBTENER_FRANQUICIAS = "ObtenerFranquicias";
 	
