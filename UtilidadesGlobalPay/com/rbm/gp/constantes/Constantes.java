@@ -179,21 +179,21 @@ public class Constantes {
 	
 	/**	Mensajes de error */
 	
-	public static final String ME001 = "Error en la validaciÃ³n de las tarjetas";
+	public static final String ME001 = "Error en la validación de las tarjetas";
 	
-	public static final String ME002 = "El nÃºmero de tarjeta esta incompleto";
+	public static final String ME002 = "El número de tarjeta esta incompleto";
 	
-	public static final String ME003 = "El nÃºmero de tarjeta especificado no es valido";
+	public static final String ME003 = "El número de tarjeta especificado no es válido";
 	
 	public static final String ME004 = "Tarjeta no soportada por el sistema";
 	
-	public static final String ME005 = "La transacciÃ³n no pudo ser procesada en este momento";
+	public static final String ME005 = "La transacción no pudo ser procesada en este momento";
 	
 	public static final String ME006 = "Comercio no identificado";
 	
 	public static final String ME007 = "El comercio no tiene entidades bancarias asociadas para los pagos por PSE";
 	
-	public static final String ME008 = "Estamos teniendo problemas tÃ©cnicos. Por favor consulte al Comercio";
+	public static final String ME008 = "Estamos teniendo problemas técnicos. Por favor consulte al Comercio";
 	
 	public static final String ME009 = "Ha Ocurrido un Error no Esperado en el Servicio Web";
 	
@@ -209,7 +209,7 @@ public class Constantes {
 	
 	public static final String MI003 = "Transaccion rechazada";
 	
-	public static final String MI004 = "Transaccion estÃ¡ en proceso";
+	public static final String MI004 = "Transaccion está en proceso";
 	
 	public static final String MI005 = "Error al procesar la transaccion";
 	

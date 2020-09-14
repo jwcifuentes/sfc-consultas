@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 		"timeoutInicioTrns",
 		"timeoutPinBlock",
 		"mensajeVoucherRBM",
+		"registrarAuditoria",
 		"estadoTxURL",
 		"queries",
 		"serviciosExpuestos",
@@ -39,6 +40,7 @@ public class Configuracion {
 	private int timeoutInicioTrns;
 	private long timeoutPinBlock;
 	private String mensajeVoucherRBM;
+	private int registrarAuditoria;
 	private String estadoTxURL;
 	private Queries queries;
 	private ServiciosExpuestos serviciosExpuestos;
@@ -74,6 +76,13 @@ public class Configuracion {
 	}
 	public void setMensajeVoucherRBM(String mensajeVoucherRBM) {
 		this.mensajeVoucherRBM = mensajeVoucherRBM;
+	}
+	
+	public int getRegistrarAuditoria() {
+		return registrarAuditoria;
+	}
+	public void setRegistrarAuditoria(int registrarAuditoria) {
+		this.registrarAuditoria = registrarAuditoria;
 	}
 	public Restricciones getRestricciones() {
 		return restricciones;
