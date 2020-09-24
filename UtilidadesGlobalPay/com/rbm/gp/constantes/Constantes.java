@@ -75,6 +75,8 @@ public class Constantes {
 	/** Constante initTrnsQ. */
 	public static final String QUERY_ACTUALIZAR_COD_TRAZABILIDAD = "actualizarTrazabilidad";
 	
+	public static final String QUERY_ACTUALIZAR_NOTIF_CLIENTE = "actualizarNotifCliente";
+	
 	/** Constante CREDITO. */
 	public static final String MEDIO_PAGO_CREDITO = "CD";
 	/** Constante DEBITO. */

@@ -63,6 +63,9 @@ public class Transaccion implements Serializable{
     private String direccionIP;
 	private String appOrigen;
 	private String linkPago;
+	private String correoComercio;
+	private String notifCliente;
+	
 	
 	public String getTipoCuentaSeleccionada() {
 		return tipoCuentaSeleccionada;
@@ -391,4 +394,23 @@ public class Transaccion implements Serializable{
 		this.linkPago = linkPago;
 	}
 	
+	/**
+	 * @return the correoComercio
+	 */
+	public String getCorreoComercio() {
+		return correoComercio;
+	}
+	/**
+	 * @param correoComercio the correoComercio to set
+	 */
+	public void setCorreoComercio(String correoComercio) {
+		this.correoComercio = correoComercio;
+	}
+	public String getNotifCliente() {
+		return notifCliente;
+	}
+	public void setNotifCliente(String notifCliente) {
+		this.notifCliente = notifCliente;
+	}
+
 }
