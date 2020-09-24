@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 		"idadquiriente",
 		"nit",
 		"urlPruebasMB",
+		"redireccionBP",
 		"urlSegundaClave",
 		"urlRealizarPago",
 		"usrPinBLock",
@@ -60,6 +61,7 @@ public class Configuracion {
 	private String idadquiriente;
 	private String nit;
 	private String urlPruebasMB;
+	private String redireccionBP;
 	private String urlSegundaClave;	
 	private String urlRealizarPago;
 	private String usrPinBLock;
@@ -220,6 +222,13 @@ public class Configuracion {
 	
 	public void setUrlPruebasMB(String urlPruebasMB) {
 		this.urlPruebasMB = urlPruebasMB;
+	}
+	
+	public String getRedireccionBP() {
+		return redireccionBP;
+	}
+	public void setRedireccionBP(String redireccionBP) {
+		this.redireccionBP = redireccionBP;		
 	}
 	
 	public String getUrlRetornoIndex() {
