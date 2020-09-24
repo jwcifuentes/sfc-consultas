@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.rbm.com.co/esb/" version="1.0" xmlns:tns="http://www.rbm.com.co/esb/">
+
+  <xs:complexType name="TipoInfoRespuesta">
+    <xs:sequence>
+      <xs:element name="codRespuesta" type="xs:string"/>
+      <xs:element name="descRespuesta" type="xs:string"/>
+      <xs:element name="estado" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoAdicional">
+    <xs:sequence>
+      <xs:element name="tipoInfo" type="xs:string"/>
+      <xs:element name="descripcion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoPago">
+    <xs:sequence>
+      <xs:element name="FIIDEntidadAdquiriente" type="xs:string"/>
+      <xs:element name="numAutorizacion" type="xs:string"/>
+      <xs:element name="codConvenioRecaudo" type="xs:string"/>
+      <xs:element name="numReferenciaPago" type="xs:string"/>
+      <xs:element name="monto" type="xs:decimal"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoRefCancelacion">
+    <xs:sequence>
+      <xs:element name="numAprobacion" type="xs:int"/>
+      <xs:element name="idTransaccionAutorizador" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoUbicacion">
+    <xs:sequence>
+      <xs:element name="ciudad" type="xs:string"/>
+      <xs:element name="departamento" type="xs:string"/>
+      <xs:element name="pais" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoIdPersona">
+    <xs:sequence>
+      <xs:element name="tipoDocumento" type="tns:TipoTipoDocumento"/>
+      <xs:element name="numDocumento" type="tns:TipoNumDocumento"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoImpuestos">
+    <xs:sequence>
+      <xs:element name="tipoImpuesto" type="tns:TipoTipoImpuesto"/>
+      <xs:element name="monto">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:decimal">
+      			<xs:minExclusive value="0"/>
+      			<xs:maxExclusive value="999999999999"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="baseImpuesto">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:decimal">
+      			<xs:minExclusive value="0"/>
+      			<xs:maxExclusive value="999999999999"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoMontoDetallado">
+    <xs:sequence>
+      <xs:element name="tipoMontoDetallado" type="tns:TipoTipoMontoDetallado"/>
+      <xs:element name="monto">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:decimal">
+      			<xs:minExclusive value="0"/>
+      			<xs:maxExclusive value="999999999999"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoCHIP">
+    <xs:sequence>
+      <xs:element name="codSeguridadEMV" type="xs:string"/>
+      <xs:element name="dataEMV" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoIdTarjetaDebitoPrivada">
+    <xs:sequence>
+      <xs:element name="franquicia" type="xs:string"/>
+      <xs:element name="numTarjeta" type="xs:string"/>
+      <xs:element name="tipoBolsillo" type="tns:TipoTipoBolsillo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoIdCuenta">
+    <xs:sequence>
+      <xs:element name="tipoCuenta" type="tns:TipoTipoCuenta"/>
+      <xs:element name="numCuenta" type="xs:string"/>
+      <xs:element name="codBanco" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoIdTarjetaCreditoPrivada">
+    <xs:sequence>
+      <xs:element name="franquicia" type="xs:string"/>
+      <xs:element name="numTarjeta" type="xs:string"/>
+      <xs:element name="tipoBolsillo" type="tns:TipoTipoBolsillo"/>
+      <xs:element minOccurs="0" name="codVerificacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoIdTarjetaCredito">
+    <xs:sequence>
+      <xs:element name="franquicia" type="tns:TipoFranquicia"/>
+      <xs:element name="numTarjeta" type="xs:string"/>
+      <xs:element minOccurs="0" name="fechaExpiracion" type="xs:date"/>
+      <xs:element minOccurs="0" name="codVerificacion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoIdTrack">
+    <xs:sequence>
+      <xs:element name="track" type="xs:string"/>
+      <xs:element name="tipoCuenta" type="tns:TipoTipoBolsillo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoAutenticacion">
+    <xs:sequence>
+      <xs:element name="clave" type="xs:string"/>
+      <xs:element name="formatoClave" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="TipoTipoDocumento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CC"/>
+      <xs:enumeration value="TI"/>
+      <xs:enumeration value="CE"/>
+	  <xs:enumeration value="NI"/>
+	  <xs:enumeration value="PS"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TipoNumDocumento">
+    <xs:restriction base="xs:long">
+            <xs:totalDigits value="10"/>
+        </xs:restriction>
+  </xs:simpleType>									 
+
+  <xs:simpleType name="TipoTipoImpuesto">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IVA"/>
+      <xs:enumeration value="Consumo"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TipoTipoMontoDetallado">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MontoAdicional"/>
+      <xs:enumeration value="Descuento"/>
+      <xs:enumeration value="BaseDevolucionIVA"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TipoTipoBolsillo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Lealtad"/>
+      <xs:enumeration value="CuotaMonetaria"/>
+      <xs:enumeration value="CupoCredito"/>
+      <xs:enumeration value="BonoEfectivo"/>
+      <xs:enumeration value="CreditoRotativoBolsillo"/>
+      <xs:enumeration value="BonoRegalo"/>
+      <xs:enumeration value="BonoDescuento"/>
+      <xs:enumeration value="BolsilloCredito"/>
+      <xs:enumeration value="BolsilloDebito"/>
+      <xs:enumeration value="Ahorros"/>
+      <xs:enumeration value="Corriente"/>
+      <xs:enumeration value="Credito"/>
+      <xs:enumeration value="Desconocida"/>
+      <xs:enumeration value="CreditoRotativo"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TipoTipoCuenta">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ahorros"/>
+      <xs:enumeration value="Corriente"/>
+      <xs:enumeration value="CreditoRotativo"/>
+      <xs:enumeration value="Credito"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TipoFranquicia">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MasterCard"/>
+      <xs:enumeration value="VISA"/>
+      <xs:enumeration value="AmEx"/>
+      <xs:enumeration value="DinersClub"/>
+      <xs:enumeration value="UnionPay"/>
+      <xs:enumeration value="CMRFalabella"/>
+	  <xs:enumeration value="JCB"/>
+	  <xs:enumeration value="Codensa"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

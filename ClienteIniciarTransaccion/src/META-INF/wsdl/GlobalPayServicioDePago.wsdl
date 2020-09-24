@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" name="GlobalPayServicioDePago" targetNamespace="http://www.rbm.com.co/esb/globalpay/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.rbm.com.co/esb/globalpay/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.rbm.com.co/esb/globalpay/" schemaLocation="globalpay.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="ConsultarEstadoDePagoFault_Exception">
+    <part element="tns:ConsultarEstadoDePagoFault" name="fault">
+    </part>
+  </message>
+  <message name="IniciarTransaccionDeCompraFault_Exception">
+    <part element="tns:IniciarTransaccionDeCompraFault" name="fault">
+    </part>
+  </message>
+  <message name="IniciarTransaccionDeCompra">
+    <part element="tns:IniciarTransaccionDeCompraSolicitud" name="parameters">
+    </part>
+  </message>
+  <message name="ConsultarEstadoDePago">
+    <part element="tns:ConsultarEstadoDePagoSolicitud" name="parameters">
+    </part>
+  </message>
+  <message name="ConsultarEstadoDePagoResponse">
+    <part element="tns:ConsultarEstadoDePagoRespuesta" name="parameters">
+    </part>
+  </message>
+  <message name="IniciarTransaccionDeCompraResponse">
+    <part element="tns:IniciarTransaccionDeCompraRespuesta" name="parameters">
+    </part>
+  </message>
+  <portType name="GlobalPayServicioDePago">
+    <operation name="IniciarTransaccionDeCompra">
+      <input message="tns:IniciarTransaccionDeCompra" wsam:Action="http://www.rbm.com.co/esb/globalpay/IniciarTransaccionDeCompra">
+    </input>
+      <output message="tns:IniciarTransaccionDeCompraResponse" wsam:Action="http://www.rbm.com.co/esb/globalpay/GlobalPayServicioDePago/IniciarTransaccionDeCompraResponse">
+    </output>
+      <fault message="tns:IniciarTransaccionDeCompraFault_Exception" name="IniciarTransaccionDeCompraFault_Exception" wsam:Action="http://www.rbm.com.co/esb/globalpay/GlobalPayServicioDePago/IniciarTransaccionDeCompra/Fault/IniciarTransaccionDeCompraFault_Exception">
+    </fault>
+    </operation>
+    <operation name="ConsultarEstadoDePago">
+      <input message="tns:ConsultarEstadoDePago" wsam:Action="http://www.rbm.com.co/esb/globalpay/ConsultarEstadoDePago">
+    </input>
+      <output message="tns:ConsultarEstadoDePagoResponse" wsam:Action="http://www.rbm.com.co/esb/globalpay/GlobalPayServicioDePago/ConsultarEstadoDePagoResponse">
+    </output>
+      <fault message="tns:ConsultarEstadoDePagoFault_Exception" name="ConsultarEstadoDePagoFault_Exception" wsam:Action="http://www.rbm.com.co/esb/globalpay/GlobalPayServicioDePago/ConsultarEstadoDePago/Fault/ConsultarEstadoDePagoFault_Exception">
+    </fault>
+    </operation>
+  </portType>
+  <binding name="GlobalPayServicioDePagoSOAPBinding" type="tns:GlobalPayServicioDePago">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="IniciarTransaccionDeCompra">
+      <soap:operation soapAction="http://www.rbm.com.co/esb/globalpay/IniciarTransaccionDeCompra"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="IniciarTransaccionDeCompraFault_Exception">
+        <soap:fault name="IniciarTransaccionDeCompraFault_Exception" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="ConsultarEstadoDePago">
+      <soap:operation soapAction="http://www.rbm.com.co/esb/globalpay/ConsultarEstadoDePago"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ConsultarEstadoDePagoFault_Exception">
+        <soap:fault name="ConsultarEstadoDePagoFault_Exception" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="GlobalPayServicioDePago">
+    <port binding="tns:GlobalPayServicioDePagoSOAPBinding" name="GlobalPayServicioDePagoSOAP">
+      <soap:address location="http://localhost:10039/GlobalPayServicios/GlobalPayServicioDePago"/>
+    </port>
+  </service>
+</definitions>

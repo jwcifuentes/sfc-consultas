@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.rbm.com.co/esb/globalpay/" version="1.0" xmlns:ns1="http://www.rbm.com.co/esb/" xmlns:tns="http://www.rbm.com.co/esb/globalpay/">
+
+  <xs:import namespace="http://www.rbm.com.co/esb/" schemaLocation="redebanESB.xsd"/>
+
+  <xs:element name="ConsultarEstadoDePagoFault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ConsultarEstadoDePagoFault" type="tns:FaultInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ConsultarEstadoDePagoRespuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cabeceraRespuesta" type="tns:TipoCabeceraSolicitud"/>
+        <xs:element minOccurs="0" name="infoPago" type="tns:TipoInfoPago"/>
+        <xs:element minOccurs="0" name="estadoActualTransaccion" type="tns:TipoEstadoActualTransaccion"/>
+        <xs:element name="infoRespuesta" type="ns1:TipoInfoRespuesta"/>
+		<xs:element minOccurs="0" name="infoPSE" type="tns:TipoInfoPSE"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ConsultarEstadoDePagoSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="credenciales" type="tns:TipoCredenciales"/>
+        <xs:element name="cabeceraSolicitud" type="tns:TipoCabeceraSolicitud"/>
+        <xs:element minOccurs="0" name="idTransaccion">
+        	<xs:simpleType>
+        		<xs:restriction base="xs:string">
+        			<xs:maxLength value="22"/>
+        		</xs:restriction>
+        	</xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="IniciarTransaccionDeCompraFault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IniciarTransaccionDeCompraFault" type="tns:FaultInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="IniciarTransaccionDeCompraRespuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cabeceraRespuesta" type="tns:TipoCabeceraSolicitud"/>
+        <xs:element name="infoRespuesta" type="ns1:TipoInfoRespuesta"/>
+        <xs:element minOccurs="0" name="infoTransaccionResp" type="tns:TipoInfoTransaccionResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="IniciarTransaccionDeCompraSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="credenciales" type="tns:TipoCredenciales"/>
+        <xs:element name="cabeceraSolicitud" type="tns:TipoCabeceraSolicitud"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="infoPersona" type="tns:TipoInfoPersona"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="informacionComercio" type="tns:TipoInformacionComercio"/>
+        <xs:element name="infoCompra" type="tns:TipoInfoCompra"/>
+        <xs:element minOccurs="0" name="infoSolicitudPSE" type="tns:TipoInfoSolicitudPSE"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="IniciarTransaccionMultiCompraFault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IniciarTransaccionDeCompraFault" type="tns:FaultInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="IniciarTransaccionMultiCompraRepuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cabeceraRespuesta" type="tns:TipoCabeceraSolicitud"/>
+        <xs:element name="infoRespuesta" type="ns1:TipoInfoRespuesta"/>
+        <xs:element minOccurs="0" name="infoTransaccionResp" type="tns:TipoInfoTransaccionResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="IniciarTransaccionMultiCompraSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="credenciales" type="tns:TipoCredenciales"/>
+        <xs:element name="cabeceraSolicitud" type="tns:TipoCabeceraSolicitud"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="infoPersona" type="tns:TipoInfoPersona"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="infoComercio" type="tns:TipoInformacionComercio"/>
+        <xs:element maxOccurs="unbounded" minOccurs="1" name="infoDispersion" type="tns:TipoInfoDispersionCompra"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="ConsultarEstadoMultiCompraFault">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="consultarEstadoMultiCompraFault" type="tns:FaultInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="ConsultarEstadoMultiCompraSolicitud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="credenciales" type="tns:TipoCredenciales"/>
+        <xs:element name="cabeceraSolicitud" type="tns:TipoCabeceraSolicitud"/>
+        <xs:element minOccurs="0" name="idTransaccion">
+        	<xs:simpleType>
+        		<xs:restriction base="xs:string">
+        			<xs:maxLength value="22"/>
+        		</xs:restriction>
+        	</xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+   <xs:element name="ConsultarEstadoMultiCompraRespuesta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="cabeceraRespuesta" type="tns:TipoCabeceraSolicitud"/>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="infoDispersionPago" type="tns:TipoInfoDispersionPago"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="infoRespuesta" type="ns1:TipoInfoRespuesta"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="TipoCredenciales">
+    <xs:sequence>
+      <xs:element name="idUsuario" type="xs:string"/>
+      <xs:element name="clave" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoCabeceraSolicitud">
+    <xs:sequence>
+      <xs:element name="infoPuntoInteraccion" type="tns:TipoInfoPuntoInteraccion"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="TipoInfoPersona">
+  	<xs:sequence>
+  		<xs:element maxOccurs="1" minOccurs="0" name="nombres" type="xs:string"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="apellidos" type="xs:string"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="idPersona" type="ns1:TipoIdPersona"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="telefono" type="tns:TipoTelefono"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="correo" type="tns:TipoCorreoElectronico"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="numeroTelefonoCelular" type="tns:TipoTelefono"/>	
+  		<xs:element maxOccurs="1" minOccurs="0" name="direccion" type="tns:TipoDireccion"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="ciudad" type="xs:string"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="direccionEntrega" type="tns:TipoDireccion"/> 
+  		<xs:element maxOccurs="1" minOccurs="0" name="ciudadEntrega" type="xs:string"/>		
+  	</xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoPuntoInteraccion">
+    <xs:sequence>
+      <xs:element name="tipoTerminal">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="20"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element name="idTerminal">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="8"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element name="idAdquiriente">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="19"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element name="idTransaccionTerminal">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:long">
+      			<xs:minExclusive value="0"/>
+      			<xs:maxExclusive value="999999"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoCompra">
+    <xs:sequence>
+      <xs:element name="numeroFactura">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="20"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element name="montoTotal">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:decimal">
+      			<xs:minExclusive value="0"/>
+      			<xs:maxExclusive value="999999999999"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="infoImpuestos" nillable="true" type="ns1:TipoInfoImpuestos"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="montoDetallado" nillable="true" type="ns1:TipoMontoDetallado"/>
+      <xs:element minOccurs="0" name="infoComercio" type="tns:TipoInfoComercio"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoComercio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="informacionComercio">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="200"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" name="informacionAdicional">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="200"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoPago">
+    <xs:sequence>
+      <xs:element name="franquicia" type="xs:string"/>
+      <xs:element name="tipoMedioDePago" type="tns:TipoTipoMedioDePago"/>
+       <xs:element minOccurs="0" name="tipoCuenta" type="xs:string"/>
+      <xs:element name="fechaTransaccion" type="xs:dateTime"/>
+      <xs:element name="numeroAprobacion" type="xs:string"/>
+      <xs:element name="montoTotal" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="costoTransaccion" type="xs:decimal"/>
+      <xs:element name="idTransaccionAutorizador" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FaultInfo">
+    <xs:sequence>
+      <xs:element name="faultCode" nillable="true" type="xs:int"/>
+      <xs:element name="faultString" nillable="true" type="xs:short"/>
+      <xs:element name="text" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TipoInfoTransaccionResp">
+    <xs:sequence>
+      <xs:element name="idTransaccionActual" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="TipoTipoMedioDePago">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Credito"/>
+      <xs:enumeration value="Debito"/>
+      <xs:enumeration value="CreditoPrivado"/>
+      <xs:enumeration value="DebitoPrivado"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TipoEstadoActualTransaccion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Iniciado"/>
+      <xs:enumeration value="Aprobado"/>
+      <xs:enumeration value="Rechazado"/>
+      <xs:enumeration value="Procesando"/>
+      <xs:enumeration value="Error"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  
+   <xs:complexType name="TipoInfoDispersionCompra">
+    <xs:sequence>
+       <xs:element name="idTerminal">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="8"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element name="idAdquiriente">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="19"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element name="infoCompra" type="tns:TipoInfoCompra"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+   <xs:complexType name="TipoInfoDispersionPago">
+   	<xs:sequence>
+   		<xs:element minOccurs="0" name="infoPago" type="tns:TipoInfoPago"/>
+        <xs:element name="infoRespuesta" type="ns1:TipoInfoRespuesta"/>
+   	</xs:sequence>
+   </xs:complexType>
+  
+  <xs:complexType name="TipoInformacionComercio">
+    <xs:sequence>
+       <xs:element maxOccurs="1" minOccurs="0" name="politicaEntrega">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="100"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="politicaDevoluciones">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="100"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="serviciosOfrecidos">
+      	<xs:simpleType>
+      		<xs:restriction base="xs:string">
+      			<xs:maxLength value="100"/>
+      		</xs:restriction>
+      	</xs:simpleType>
+      </xs:element>
+      <xs:element maxOccurs="1" minOccurs="0" name="infoAtencionCliente" type="tns:TipoInfoAtencionCliente"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="TipoInfoAtencionCliente">
+  	<xs:sequence>
+  		<xs:element maxOccurs="1" minOccurs="0" name="direccionContacto" type="tns:TipoDireccion"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="telefonoContacto" type="tns:TipoTelefono"/>
+  		<xs:element maxOccurs="1" minOccurs="0" name="correoElectronicoContacto" type="tns:TipoCorreoElectronico"/>
+  	</xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="TipoDireccion">
+    <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="TipoTelefono">
+    <xs:restriction base="xs:long">
+    	<xs:minInclusive value="1"/>
+        <xs:maxInclusive value="9999999999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="TipoCorreoElectronico">
+    <xs:restriction base="xs:string">
+            <xs:maxLength value="60"/>
+        </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="TipoInfoPSE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codTrazabilidad" type="xs:string"/>
+      <xs:element name="referencia" type="xs:int"/>
+      <xs:element minOccurs="0" name="fechaTransaccion" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="fechaProcBanco" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="cicloTransaccion" type="xs:string"/>
+      <xs:element minOccurs="0" name="nitAdquiriente" type="xs:string"/>
+	  <xs:element minOccurs="0" name="descripcionBanco" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="TipoInfoSolicitudPSE">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nitAdquiriente" type="tns:tipoNitAdquiriente"/>
+      <xs:element minOccurs="0" name="codigoServicio" type="xs:string"/>
+      <xs:element minOccurs="0" name="conceptoPago" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="tipoNitAdquiriente">
+  	<xs:restriction base="xs:string">
+  		<xs:pattern value="[a-z]"/>
+  	</xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>

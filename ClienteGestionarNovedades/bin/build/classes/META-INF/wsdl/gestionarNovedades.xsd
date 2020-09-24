@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.rbm.com.co/esb/gestionarNovedades" xmlns:rdb="http://www.rbm.com.co/esb/" xmlns:tns="http://www.rbm.com.co/esb/gestionarNovedades">
+	  
+	<xsd:import namespace="http://www.rbm.com.co/esb/" schemaLocation="gestionarNovedadesTypes.xsd"/>
+
+	<xsd:element name="gestionarNovedadesSolicitud" type="tns:gestionarNovedadesSolicitudReqType"/> 
+	<xsd:element name="gestionarNovedadesRespuesta" type="tns:gestionarNovedadesRespuestaResType"/>
+
+	<xsd:complexType name="gestionarNovedadesSolicitudReqType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="cabeceraSolicitud" type="rdb:CabeceraType"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="infoTransaccion" type="tns:InfoTransaccionReqType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+
+	<xsd:complexType name="InfoTransaccionReqType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="1" name="campoAct" type="tns:CampoAct"/>
+		</xsd:sequence>
+	</xsd:complexType>		
+	
+	<xsd:complexType name="CampoAct">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="tipoTag" type="tns:TipoTag"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="data" type="tns:Data"/>
+		</xsd:sequence>
+	</xsd:complexType>		
+
+	<xsd:simpleType name="TipoTag">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Data">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="180"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	
+	<xsd:complexType name="gestionarNovedadesRespuestaResType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="1" minOccurs="1" name="cabeceraRespuesta" type="rdb:CabeceraType"/>
+			<xsd:element maxOccurs="1" minOccurs="1" name="infoRespuesta" type="rdb:InfoRespuestaResType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+		
+</xsd:schema>
