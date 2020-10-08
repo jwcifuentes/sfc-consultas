@@ -113,6 +113,8 @@ public class GestorEntidades implements IGestorEntidades{
 		
 		try {
 			
+			System.out.println("modificarEntidad - entidad: " + entidad.toString());
+			
 			List<Entry> resultados = gestorLdap.ejecutarConsulta(mapeoLdap.getIdGrupo(), entidad.getNombreEntidad());
 			
 			Entry eUsuario = null;
@@ -162,9 +164,11 @@ public class GestorEntidades implements IGestorEntidades{
 				entidad.setUsuarios(usuarios); 
 			}
 			
+			System.out.println("modificarEntidad - entidad 2: " + entidad.toString());
+			
 			
 			List<String> atributos = LdapParser.toLdapAttrList(entidad);
-				
+			System.out.println("atributos: " + atributos.toString());
 				
 			gestorLdap.modificarEntrada(cnRuta, atributos, false);
 			

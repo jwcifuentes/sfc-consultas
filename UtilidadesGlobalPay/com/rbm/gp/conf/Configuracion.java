@@ -1,6 +1,6 @@
 package com.rbm.gp.conf;
 
- import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="globalpay")
@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 		"timeoutInicioTrns",
 		"timeoutPinBlock",
 		"mensajeVoucherRBM",
+		"registrarAuditoria",
 		"estadoTxURL",
 		"queries",
 		"serviciosExpuestos",
@@ -40,6 +41,7 @@ public class Configuracion {
 	private int timeoutInicioTrns;
 	private long timeoutPinBlock;
 	private String mensajeVoucherRBM;
+	private int registrarAuditoria;
 	private String estadoTxURL;
 	private Queries queries;
 	private ServiciosExpuestos serviciosExpuestos;
@@ -76,6 +78,13 @@ public class Configuracion {
 	}
 	public void setMensajeVoucherRBM(String mensajeVoucherRBM) {
 		this.mensajeVoucherRBM = mensajeVoucherRBM;
+	}
+	
+	public int getRegistrarAuditoria() {
+		return registrarAuditoria;
+	}
+	public void setRegistrarAuditoria(int registrarAuditoria) {
+		this.registrarAuditoria = registrarAuditoria;
 	}
 	public Restricciones getRestricciones() {
 		return restricciones;
@@ -214,13 +223,14 @@ public class Configuracion {
 	public void setUrlPruebasMB(String urlPruebasMB) {
 		this.urlPruebasMB = urlPruebasMB;
 	}
-		
+	
 	public String getRedireccionBP() {
 		return redireccionBP;
 	}
 	public void setRedireccionBP(String redireccionBP) {
-		this.redireccionBP = redireccionBP;
+		this.redireccionBP = redireccionBP;		
 	}
+	
 	public String getUrlRetornoIndex() {
 		return urlRetornoIndex;
 	}

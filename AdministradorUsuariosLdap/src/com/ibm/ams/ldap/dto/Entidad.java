@@ -1,5 +1,7 @@
 package com.ibm.ams.ldap.dto;
 
+import java.util.Arrays;
+
 import com.ibm.ams.ldap.parser.LdapAttribute;
 import com.ibm.ams.ldap.parser.LdapEntity;
 
@@ -111,5 +113,13 @@ public class Entidad {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+
+	@Override
+	public String toString() {
+		return "Entidad [nombreEntidad=" + nombreEntidad + ", organization=" + organization + ", descripcion="
+				+ descripcion + ", usuarios=" + Arrays.toString(usuarios) + ", categoria=" + categoria + "]";
+	}
+	
+	
 	
 }
