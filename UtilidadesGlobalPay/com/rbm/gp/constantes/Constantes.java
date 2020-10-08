@@ -227,6 +227,8 @@ public class Constantes {
 	public static final String IMAGENES_DIR_RAIZ = "/GlobalPayWeb/images/";
 
 	public static final String QUERY_OBTENER_INFO_LINK = "ObtenerInfoLink";
+	
+	public static final String QUERY_OBTENER_CORREO_COMERCIO = "consultarCorreoComercio";
 
 	public static final String URLIniCompra = "url/IniciarCompra";
 
